@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Lab4_3</title>
+</head>
+<body>
+
+<script>
+// --- 1. Створення масиву ---
+let size = 15; // мінімум 15 елементів
+let arr = [];
+
+// Заповнюємо масив випадковими числами від -50 до 50
+for (let i = 0; i < size; i++) {
+    arr.push(Math.floor(Math.random() * 101) - 50); // -50..50
+}
+
+// Виводимо масив
+document.write("Масив: " + arr.join("  ") + "<br><br>");
+
+
+// --- 2. Заданий проміжок (A,B] ---
+let A = 10;
+let B = 30;
+
+// Обчислюємо добуток чисел у проміжку (A,B]
+let product = arr.filter(num => num > A && num <= B)
+                 .reduce((acc, val) => acc * val, 1); // початкове значення 1
+
+// Обчислюємо кількість від’ємних чисел на місцях, кратних 3
+// Місця кратні 3: індекси 2,5,8,11,14 (0-індексація)
+let negativeCount = arr
+    .filter((num, index) => (index + 1) % 3 === 0 && num < 0)
+    .length;
+
+// Виводимо результати
+document.write("Добуток чисел у проміжку (" + A + "," + B + "]: " + product + "<br>");
+document.write("Кількість від’ємних чисел на місцях, кратних 3: " + negativeCount);
+</script>
+
+</body>
+</html>
